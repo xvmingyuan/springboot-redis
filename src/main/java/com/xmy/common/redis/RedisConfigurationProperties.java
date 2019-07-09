@@ -7,6 +7,9 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 配置文件源
+ */
 @Configuration
 @ConfigurationProperties(prefix = "spring.redis.cluster")
 @PropertySource("classpath:application.properties")

@@ -9,6 +9,9 @@ import redis.clients.jedis.JedisCluster;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 文件配置
+ */
 @Configuration
 public class RedisConfig {
     @Autowired
