@@ -10,11 +10,13 @@ import java.lang.annotation.Target;
  * Redis代理AOP接口
  */
 @Retention(RetentionPolicy.RUNTIME)
+// 注解的使用范围:方法,类或接口
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Documented
 public @interface RedisCache {
     /**
      * 数据返回类型
+     *
      * @return
      */
     Class type();
@@ -22,6 +24,8 @@ public @interface RedisCache {
     /**
      * 数据缓冲时间单位:秒(s)
      * 默认10分钟
+     * 0 : 永不过期
+     *
      * @return
      */
     int cacheTime() default 600;

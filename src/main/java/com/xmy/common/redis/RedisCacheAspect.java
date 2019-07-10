@@ -29,11 +29,11 @@ public class RedisCacheAspect {
 
     @Autowired
     private JedisService jedisService;
-
+    // aop 扫面路径
     @Pointcut("execution(public * com.xmy.service..*.*(..))")
     public void webAspect() {
     }
-
+    // aop 签名(切入代码)
     @Around("webAspect()")
     public Object redisCache(ProceedingJoinPoint pjp) throws Throwable {
         //得到类名、方法名和参数
@@ -83,7 +83,7 @@ public class RedisCacheAspect {
      * @Date: 2018/5/16
      */
     private String getKey(String className, String methodName, Object[] args) {
-        StringBuffer sb = new StringBuffer("SpringBoot2:");
+        StringBuffer sb = new StringBuffer("SpringBoot:");
         sb.append(className);
         sb.append("_");
         sb.append(methodName);
