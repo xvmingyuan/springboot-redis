@@ -46,7 +46,7 @@
             String address();  
         }
         使用：
-        @UserdefinedAnnotation(value=123,name="wangwenjun",address="火星")  
+        @UserdefinedAnnotation(value=123,name="zhangsan",address="火星")  
             public static void main(String[] args) {  
                 System.out.println("hello");  
             }  
