@@ -26,10 +26,10 @@ import java.lang.reflect.Method;
 public class RedisCacheAspect {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    //调用 封装缓存服务
     @Autowired
     private JedisService jedisService;
-    // aop 扫面路径
+    // 配置aop 扫面路径
     @Pointcut("execution(public * com.xmy.service..*.*(..))")
     public void webAspect() {
     }
@@ -42,17 +42,19 @@ public class RedisCacheAspect {
         String methodName = pjp.getSignature().getName();
         Object[] args = pjp.getArgs();
         logger.info("args: " + JSON.toJSON(args).toString());
-        //根据雷鸣,方法名和参数生成key
+        //根据类名,方法名和参数生成key
         String key = getKey(className, methodName, args);
         logger.info("生成的key[{}]", key);
 
-        //得到被代理的方法
+        //得到被代理的签名
         Signature signature = pjp.getSignature();
         if (!(signature instanceof MethodSignature)) {
             throw new IllegalArgumentException();
         }
         MethodSignature methodSignature = (MethodSignature) signature;
-        Method method = pjp.getTarget().getClass().getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
+        // 带签名方法
+        Method method = pjp.getTarget().getClass().getMethod(methodSignature.getName(),
+                methodSignature.getParameterTypes());
         //得到被代理的方法上的注解
         Class modelType = method.getAnnotation(RedisCache.class).type();
         int cacheTime = method.getAnnotation(RedisCache.class).cacheTime();

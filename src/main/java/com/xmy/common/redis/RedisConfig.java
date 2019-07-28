@@ -16,9 +16,10 @@ import java.util.Set;
 public class RedisConfig {
     @Autowired
     RedisConfigurationProperties redisConfigurationProperties;
-
+    // spring 中注入 JedisCluster
     @Bean
     public JedisCluster jedisCluster() {
+        // 集群节点 传入JedisCluster
         Set<HostAndPort> nodeSet = new HashSet<>();
         for (String node : redisConfigurationProperties.getNodes()) {
             String[] split = node.split(":");

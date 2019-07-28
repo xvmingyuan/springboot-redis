@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Redis缓存通用服务
+ * JedisCluster 通用缓存服务封装类
  */
 @Service
 public class JedisServiceImpl implements JedisService {
@@ -19,7 +19,7 @@ public class JedisServiceImpl implements JedisService {
 
     @Override
     public boolean exists(String key) {
-        return jedisCluster.exists(key) ? true : false;
+        return jedisCluster.exists(key);
     }
 
     @Override

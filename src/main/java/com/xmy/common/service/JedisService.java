@@ -91,7 +91,7 @@ public interface JedisService {
      * @Author:
      * @Date: 2018/5/16
      */
-    Map<String ,Object> getMapData(String key);
+    Map getMapData(String key);
 
     /**
      * @Description: 加锁，避免重复提交

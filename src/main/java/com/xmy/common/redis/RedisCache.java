@@ -7,10 +7,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Redis代理AOP接口
+ * Redis代理AOP接口(自定义)
  */
+// 触发类型: Runtime 时触发
 @Retention(RetentionPolicy.RUNTIME)
-// 注解的使用范围:方法,类或接口
+// 注解使用范围:方法,类或接口
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Documented
 public @interface RedisCache {

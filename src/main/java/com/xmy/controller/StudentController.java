@@ -27,4 +27,22 @@ public class StudentController {
     public PageModel getStudentsDefault() {
         return studentService.getPages(1, 10);
     }
+
+    @RequestMapping("/gettest")
+    public PageModel getStudentsDefault(Integer count) {
+        for (int i = 0; i <= count; i++) {
+            studentService.getPages(1, 10);
+        }
+
+        return studentService.getPages(1, 10);
+    }
+
+    @RequestMapping("/settest")
+    public PageModel setTest(Integer index, Integer count) {
+        for (int i = index; i <= count; i++) {
+            studentService.getPages(i, 10);
+        }
+
+        return studentService.getPages(1, 10);
+    }
 }
